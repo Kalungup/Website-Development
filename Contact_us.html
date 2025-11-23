@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us – ABSTRACT FOR ALL</title>
+    <link rel="stylesheet" href="Contact_us.css" />
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About us.html">About Us</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="Contact--us.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1 class="hero-title">Contact Us</h1>
+        <p class="hero-subtitle">We’re here to help you. Reach out anytime.</p>
+    </div>
+</header>
+
+<section class="contact-wrapper">
+
+    <div class="contact-details card">
+        <h2>Get in Touch</h2>
+
+        <div class="info-item">
+            <h3>📍 Address</h3>
+            <p>Storgatan 64, 1502<br>Huvudsta Centrum<br>171 52, Solna, Sweden</p>
+        </div>
+
+        <div class="info-item">
+            <h3>📞 Phone</h3>
+            <p>+46769577260</p>
+            <p> <a href="https://wa.me/46769577260" class="whatsapp-btn" target="_blank">
+    💬 Chat on WhatsApp
+</a> </p>
+        </div>
+
+        <div class="info-item">
+            <h3>📧 Email</h3>
+            <p>Kalungup@gmail.com</p>
+        </div>
+    </div>
+
+    <div class="contact-form card">
+        <h2>Send Us a Message</h2>
+
+        <form id="contactForm">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="name" />
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" />
+            </div>
+
+            <div class="form-group">
+                <label>Your Message</label>
+                <textarea id="message"></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+    </div>
+
+</section>
+
+<footer>
+    © 2025 ABSTRACT FOR ALL. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (!name || !email || !message) {
+        alert("Please fill in all fields before submitting.");
+        return;
+    }
+
+    alert("Your message has been sent successfully!");
+});
+</script>
+
+</body>
+</html>
