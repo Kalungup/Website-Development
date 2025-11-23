@@ -62,37 +62,219 @@ body {
     padding: 20px 0;
   }
   
-  /* Fade-in for the title */
-.fade-in {
-  opacity: 0;
-  animation: fadeIn 1.5s ease-out forwards;
+ /* Global polish */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #e5e7eb;
 }
 
-/* Slide-up animation for subtitles */
-.slide-up {
+/* Header & nav */
+header {
+  background: linear-gradient(135deg, #020617, #111827, #0f766e);
+  color: #f9fafb;
+  padding-bottom: 3rem;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 5%;
+}
+
+nav a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 3.5rem 1rem 2.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+
+  background: linear-gradient(120deg, #38bdf8, #a855f7, #22c55e);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  color: transparent;
+
+  opacity: 0;
+  transform: translateY(24px) scale(0.96);
+  filter: blur(5px);
+  animation:
+    heroIn 1s ease-out forwards,
+    heroGradient 10s ease-in-out 1s infinite alternate;
+}
+
+.hero-subtitle,
+.hero-tagline {
+  margin: 0.2rem 0;
+  font-size: 1rem;
+  color: #d1d5db;
   opacity: 0;
   transform: translateY(20px);
-  animation: slideUp 1.2s ease-out forwards;
+  filter: blur(5px);
+  animation: heroTextIn 0.9s ease-out forwards;
 }
 
-/* Delay class to stagger animations */
-.delay-1 {
-  animation-delay: 0.6s;
+.hero-subtitle {
+  animation-delay: 0.4s;
 }
 
-/* Keyframes */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+.hero-tagline {
+  font-weight: 500;
+  animation-delay: 0.8s;
 }
 
-@keyframes slideUp {
-  from {
+/* Hero animations */
+@keyframes heroIn {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+    filter: blur(5px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(0) scale(1.02);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroTextIn {
+  0% {
     opacity: 0;
     transform: translateY(20px);
+    filter: blur(5px);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
+}
+
+@keyframes heroGradient {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Layout for the main content grid (your 4 blocks) */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 1rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 800px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Cards */
+.card {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e5e7eb;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+  border-color: #c4d0ff;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Titles & text inside cards */
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.35rem;
+}
+
+.card p,
+.card li,
+.card a {
+  font-size: 0.95rem;
+}
+
+/* Services list cleanup */
+.card ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5rem 0 1rem;
+}
+
+.card ul li::before {
+  content: "• ";
+  color: #3b82f6;
+}
+
+/* Footer */
+footer {
+  background: #020617;
+  color: #9ca3af;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.8rem;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-start;   /* <-- Align LEFT */
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 2rem;         /* <-- left padding to position nicely */
+}
+ 
+nav a {
+  color: #e5e7eb;                /* adjust color if needed */
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+nav a:hover {
+  text-decoration: underline;
 }
