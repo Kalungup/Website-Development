@@ -22,25 +22,7 @@ body {
     background-color: #555;
   }
   
-  main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  main section {
-    width: calc(33.33% - 20px);
-    background-color: #fff;
-    text-align: center;
-    padding: 40px;
-    margin: 10px;
-    box-shadow: 2px 2px 5px #999;
-  }
-  
-  main section h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
+
   
   footer {
     text-align: center;
@@ -264,4 +246,104 @@ nav a {
 
 nav a:hover {
   text-decoration: underline;
+}
+
+/* === MAIN CONTENT LAYOUT === */
+.content {
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+  padding: 2.5rem 1rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === CARD STYLE === */
+.card {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem 2.2rem;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e5e7eb;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.12), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+  border-color: #c4d0ff;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.35rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.card a {
+  font-size: 0.92rem;
+}
+
+/* Services bullets inside card */
+.services-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5rem 0 0.5rem;
+}
+
+.services-list li::before {
+  content: "• ";
+  color: #3b82f6;
+}
+
+/* === PROJECTS TABLE === */
+.projects-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5rem 0 0.75rem;
+  font-size: 0.9rem;
+}
+
+.projects-table th,
+.projects-table td {
+  border: 1px solid #d1d5db;
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+}
+
+.projects-table th {
+  background-color: #f3f4f6;
+  font-weight: 600;
 }
